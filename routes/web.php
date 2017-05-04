@@ -48,4 +48,6 @@ Route::post('wawancara/lolos', 'WawancaraController@lolos');
 Route::post('wawancara/gagal', 'WawancaraController@gagal');
 Route::post('submitComment', 'WawancaraController@comment');
 
+Route::get('penerima', 'WawancaraController@penerima');
 Route::post('diterima', 'WawancaraController@diterima');
+Route::post('diterima/reset', 'WawancaraController@reset');

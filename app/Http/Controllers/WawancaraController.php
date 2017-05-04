@@ -37,6 +37,29 @@ class WawancaraController extends Controller
 	}
 	public function diterima(Request $request)
 	{
-		// BELUM
+	    Wawancara::where('id_wawancara', $request->idpend)
+		  ->update(['status' => 1]);
+
+        return back();
+	}
+	public function reset(Request $request)
+	{
+	    Wawancara::where('id_wawancara', $request->pendidhap)
+		  ->update(['status' => 0]);
+		Menilai::where('id_wawancara', $request->pendidhap)->delete();
+	    Wawancara::where('id_wawancara', $request->pendidhap)
+		  ->update(['nilai_wawancara' => 0]);
+
+        return back();
+	}
+	public function penerima(Request $request)
+	{
+		$wawancara=Wawancara::where('status','=',1)->get();
+		// $pendaftar=Pendaftar::whereNotNull('id_wawancara')->get();
+		$pendaftar=Pendaftar::all();
+		$pendidikan=Pendidikan::all();
+		$menilai=Menilai::all();
+		$penguji=Penguji::all();
+	    return view('proses.diterima',['penguji' => $penguji, 'pendidikan' => $pendidikan, 'wawancara' => $wawancara, 'menilai' => $menilai, 'pendaftar' => $pendaftar]);
 	}
 }

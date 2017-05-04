@@ -42,7 +42,7 @@
           <div class="col-md-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Data Peserta Tahap Wawancara</h3>
+                <h3 class="box-title">Data Peserta Lolos LKMM TL</h3>
               </div>
               <div class="box-body table-responsive" style="overflow: auto; overflow-y:hidden; max-height: 100%;">
 
@@ -76,24 +76,12 @@
                     <td>{{$pend->nilai_wawancara}}</td>
                     <td>
                       <!-- TOMBOL WAWANCARA -->
-                      @if($pend->status == 0)
                       <a href="#pendf" class="hehe" id="hehe{{$pend->id_wawancara}}" data-temp="1" data-wanid="{{$pend->id_wawancara}}" data-toggle="modal" data-target="#hasil{{$pend->id_wawancara}}" style="color:orange"\><b>Hasil Wawancara</b></a>
-                      <a href="" class="hehe" id="waw{{$pend->id_pendaftar}}" data-temp="1" data-pendi="{{$pend->id_pendaftar}}" data-toggle="modal" data-target="#waw{{$pend->id_pendaftar}}"><span class="glyphicon glyphicon-edit" title="lakukan wawancara" style="color:green"></span></a>
-                      <a href="#pendf" class="hehe" id="hehe{{$pend->id_pendaftar}}" data-temp="1" data-pendid="{{$pend->id_pendaftar}}" data-toggle="modal" data-target="#nilai{{$pend->id_pendaftar}}"\><span class='fa fa-file' title="lihat data" style="color:navy"></span></a>
-
-                      <a href="#lolos" onclick="event.preventDefault(); document.getElementById('lolos-form{{$pend->id_wawancara}}').submit();"><span class="glyphicon glyphicon-ok" style="color:green" title="Diterima"></span></a>
-                      <form id="lolos-form{{$pend->id_wawancara}}" action="{{ url('/diterima') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                          <input class="form-control" name="idpend" type="text" value="{{$pend->id_wawancara}}">
-                      </form>
-                      @else
-                      <label style="color:green">LOLOS</label>
                       <a href="#reset" onclick="event.preventDefault(); document.getElementById('hapsz-form{{$pend->id_wawancara}}').submit();"><span class="glyphicon glyphicon-remove" style="color:red" title="cancel"></span></a>
                       <form id="hapsz-form{{$pend->id_wawancara}}" action="{{ url('/diterima/reset') }}" method="POST" style="display: none;">
                           {{ csrf_field() }}
                           <input class="form-control" name="pendidhap" type="text" value="{{$pend->id_wawancara}}">
                       </form>
-                      @endif
                     </td>
 
 <!-- MODAL HASIL WAWANCARA -->
@@ -128,7 +116,6 @@
                               </div>
                             </div>                            
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Save changes</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                               </div>
                           </div>
