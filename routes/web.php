@@ -12,16 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 Route::get('login', function () {
-    return view('login');
+    return view('login2');
 });
 
+Route::get('daftar', function () {
+    return view('peserta.daftar');
+});
 
 // MENU MANAJEMEN
 Route::get('home', 'HomeController@index');
+Route::get('landing', 'LandingController@index');
 
 Route::get('pendidikan', 'PendidikanController@pendidikan');
 Route::post('pendidikan/update', 'PendidikanController@update');
