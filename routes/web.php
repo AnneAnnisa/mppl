@@ -19,9 +19,15 @@ Route::get('login', function () {
     return view('login2');
 });
 
-Route::get('daftar', function () {
-    return view('peserta.daftar');
-});
+// Route::get('daftar', function () {
+//     return view('peserta.daftar');
+// });
+
+Route::get('daftar', 'PendaftarController@daftarpeserta');
+Route::post('pendaftaran/tambah', 'PendaftarController@tambah');
+
+
+
 
 // MENU MANAJEMEN
 Route::get('home', 'HomeController@index');

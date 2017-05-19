@@ -91,50 +91,52 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form action="{{url('pendaftaran/tambah')}}" method="post" role="form">
                             <div class="box-body">
+                             {{ csrf_field() }}
                               <div class="form-group">
                                 <label for="exampleInputEmail1">Nomor Induk Mahasiswa (NIM)</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="5114100024" required="">
+                                <input name="nim" type="number" class="form-control" id="exampleInputEmail1" placeholder="5114100024" required="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Lengkap</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Setyassida Novian Putra D" required="">
+                                <input name="nama" type="text" class="form-control" id="exampleInputEmail1" placeholder="Setyassida Novian Putra D" required="">
                             </div>
                             <div class="form-group">
                                 <label>Kampus Asal</label>
-                                <select class="form-control">
-                                  <option>Institut Teknologi Sepuluh Nopember (ITS)</option>
-                                  <option>Universitas Gadjah Mada (UGM)</option>
-                                  <option>Universitas Sebelas Maret (UNS)</option>
+                                <select name="kampus" class="form-control">
+                                  @foreach($pendidikan as $pend)
+                                  <option>{{$pend->jurusan}}</option>
+                                  @endforeach
                               </select>
+                              
                           </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="setyassida@gmail.com" required="">
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="setyassida@gmail.com" required="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Telepon</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="085725017999" required="">
+                        <input name="telepon" type="number" class="form-control" id="exampleInputEmail1" placeholder="085725017999" required="">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
-                        <textarea class="form-control" rows="3" placeholder="Gebang Wetan No. 21, Sukolilo Surabaya" required=""></textarea>
+                        <textarea name="alamat" class="form-control" rows="3" placeholder="Gebang Wetan No. 21, Sukolilo Surabaya" required=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Motivasi Mendaftar LKMM-TL 2017</label>
-                        <textarea class="form-control" rows="3" placeholder="Saya ingin mengikuti LKMM-TL 2017 karena ..." required=""></textarea>
+                        <textarea name="motivasi" class="form-control" rows="3" placeholder="Saya ingin mengikuti LKMM-TL 2017 karena ..." required=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">File CV</label>
-                        <input type="file" id="exampleInputFile" required="">
+                        <input type="file" id="exampleInputFile" >
 
                         <p class="help-block">Format file cv berupa .pdf</p>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">Foto</label>
-                        <input type="file" id="exampleInputFile" required="">
+                        <input type="file" id="exampleInputFile" >
 
                         <p class="help-block">Format file cv berupa .jpg atau .jpeg dengan ukuran file maksimal 2 Mb</p>
                     </div>
