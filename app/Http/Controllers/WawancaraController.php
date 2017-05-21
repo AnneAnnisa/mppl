@@ -20,6 +20,7 @@ class WawancaraController extends Controller
 		$pendidikan=Pendidikan::all();
 		$menilai=Menilai::all();
 		$penguji=Penguji::all();
+		// dd($penguji);	
 	    return view('proses.wawancara',['penguji' => $penguji, 'pendidikan' => $pendidikan, 'wawancara' => $wawancara, 'menilai' => $menilai, 'pendaftar' => $pendaftar]);
 	}
 	public function comment(Request $request)
@@ -32,6 +33,14 @@ class WawancaraController extends Controller
 
 	    Wawancara::where('id_wawancara', $request->wawan)
 		  ->update(['nilai_wawancara' => $price]);
+
+		return back();
+	}
+	public function tanggal(Request $request)
+	{
+		$masuk = Wawancara::where('id_wawancara', $request->idi)
+			->update(['waktu_wawancara' => $request->datetimepicker]);
+		// dd($masuk);
 
 		return back();
 	}
