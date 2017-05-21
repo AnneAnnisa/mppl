@@ -56,7 +56,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{url('/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Admin</span>
+              <span class="hidden-xs">Ovan</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -64,17 +64,14 @@
                 <img src="{{url('/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  Admin
-                  <small>Member since Nov. 2012</small>
+                  Ovan
+                  
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
                 <div class="pull-right">
-                  <a href="landing" class="btn btn-default btn-flat">Sign out</a>
+                  <a href=" {{url('landing')}} " class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -100,7 +97,7 @@
           <img src="{{url('/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p>Ovan</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -118,7 +115,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">PENGATURAN</li>
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Manajemen Data</span>
             <span class="pull-right-container">
