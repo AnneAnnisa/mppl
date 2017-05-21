@@ -49,4 +49,34 @@ class PendaftarController extends Controller
 
         return back();
 	}
+
+	public function daftarpeserta($value='')
+	{
+		$pendidikan=Pendidikan::all();
+		//$wawancara=Wawancara::all();
+	    //return view('manajemen.pendaftar',['penguji' => $penguji, 'pendidikan' => $pendidikan, 'wawancara' => $wawancara]);
+	
+		return view('peserta.daftar', ['pendidikan' => $pendidikan,]);
+	}
+
+
+
+
+	public function tambah(Request $request)
+	{
+        $peserta = new Pendaftar;
+        $id_peserta=DB::selectOne("SELECT uuid() as AUTO_INCREMENT;");
+        $peserta->id_pendaftar=$id_peserta->AUTO_INCREMENT;
+        $peserta->nim = $request->nim;
+        $peserta->nama = $request->nama;
+        $peserta->email = $request->email;
+
+        //$peserta->kampus = $request->jur;
+        $peserta->alamat = $request->alamat;
+        $peserta->telp = $request->telepon;
+        $peserta->alasan = $request->motivasi;
+        $peserta->save();
+
+        return redirect('/daftar');
+	}
 }
