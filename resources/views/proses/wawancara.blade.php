@@ -72,7 +72,13 @@
                     <td>{{$pend->pendaftar->nama}}</td>
                     <td>{{$pend->pendaftar->nim}}</td>
                     <td>{{$pend->pendaftar->pendidikan->universitas}}</td>
+                    @if($pend->waktu_wawancara != NULL)
                     <td>{{$pend->waktu_wawancara}}</td>
+                    @else
+                    <td>
+                      <a href="" class="hehe" id="tang{{$pend->id_wawancara}}" data-temp="1" data-tangid="{{$pend->id_wawancara}}" data-toggle="modal" data-target="#tang{{$pend->id_wawancara}}"><b>Set Tanggal<b></a>
+                    </td>
+                    @endif
                     <td>{{$pend->nilai_wawancara}}</td>
                     <td>
                       <!-- TOMBOL WAWANCARA -->
@@ -95,6 +101,44 @@
                       </form>
                       @endif
                     </td>
+
+<!-- MODAL DATE PICKER -->
+                      <div class="modal fade" id="tang{{$pend->id_wawancara}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header" style="background:#efefef">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h3 class="modal-title" id="myModalLabel">Input Tanggal Wawancara</h3>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <form method="post" action="{{url('/submitTanggal')}}">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                      <div class="col-md-3">
+                                        <input type="hidden" name="idi" value="{{$pend->id_wawancara}}">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class='input-group'>
+                                          <input type='text' class="form-control" name="datetimepicker" id='datetimepicker'/>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <br>
+                                      <button type="submit" class="btn btn-success">Save changes</button>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
 
 <!-- MODAL HASIL WAWANCARA -->
                       <div class="modal fade" id="hasil{{$pend->id_wawancara}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -122,7 +166,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Catatan / Komentar</label>
-                                    <textarea rows="4" class="form-control" name="comment" type="text" id="xcom" value="dfs" disabled>Pilih nama diatas untuk melihat komentar yang diberikan</textarea>
+                                    <textarea rows="4" class="form-control" name="comment" type="text" id="xcomm" value="dfs" disabled>Pilih nama diatas untuk melihat komentar yang diberikan</textarea>
                                   </div>
                                 </div>
                               </div>
@@ -286,10 +330,24 @@
   $('.orang').on('click', function(event){
 
       document.getElementById("xnil").value=this.dataset.xnilai;
-      document.getElementById("xcom").value=this.dataset.xcom;
+      document.getElementById("xcomm").value=this.dataset.xcom;
 
   });
-
+  $(".hehe").click(function(event) {
+        
+        var article = document.getElementById(this.id);
+        var res= article.dataset.tangid;        
+        $('#datetimepickerz'+res).datetimepicker({
+          format: 'DD/MM/YYYY',
+          useCurrent: false,
+          allowInputToggle: true
+          
+        });
+    });
+  $('#datetimepicker').datetimepicker({
+          format: 'YYYY/MM/DD hh:mm:ss',
+          useCurrent: false,
+          allowInputToggle: true});
 
 </script>
 
