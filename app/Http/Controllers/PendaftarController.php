@@ -91,6 +91,16 @@ class PendaftarController extends Controller
 
         return redirect('/daftar');
 	}
+
+	public function tambahuniv($value='')
+	{
+		//$pendidikan=Pendidikan::all();
+		//$wawancara=Wawancara::all();
+	    //return view('manajemen.pendaftar',['penguji' => $penguji, 'pendidikan' => $pendidikan, 'wawancara' => $wawancara]);
+	
+		return view('pendidikan.tambah');
+	}
+
 }
 
 

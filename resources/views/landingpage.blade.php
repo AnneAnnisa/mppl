@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">SI LKMM-TL</a>
+                <a class="navbar-brand topnav" href=" {{url('/')}} ">SI LKMM-TL</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -78,10 +78,10 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="daftar" class="btn btn-default btn-lg"><i class="fa fa-edit fa-fw"></i> <span class="network-name">Daftar</span></a>
+                                <a href="{{url('daftar')}}" class="btn btn-default btn-lg"><i class="fa fa-edit fa-fw"></i> <span class="network-name">Daftar</span></a>
                             </li>
                             <li>
-                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-newspaper-o fa-fw"></i> <span class="network-name">Lihat Pengumuman</span></a>
+                                <a href="{{url('lihatpengumuman')}}" class="btn btn-default btn-lg"><i class="fa fa-newspaper-o fa-fw"></i> <span class="network-name">Lihat Pengumuman</span></a>
                             </li>
                             <li>
                                 <a href="login" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Sign In</span></a>

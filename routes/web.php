@@ -23,8 +23,17 @@ Route::get('login', function () {
 //     return view('peserta.daftar');
 // });
 
+
+
 Route::get('daftar', 'PendaftarController@daftarpeserta');
 Route::post('pendaftaran/tambah', 'PendaftarController@tambah');
+
+Route::get('tambahuniv', 'PendaftarController@tambahuniv');
+Route::post('tambahuniv/tambah', 'PendidikanController@tambahuniv');
+
+Route::get('lihatpengumuman', 'PengumumanController@index');
+Route::post('lihatpengumuman/cek', 'PengumumanController@cek');
+
 
 
 

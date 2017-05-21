@@ -181,11 +181,11 @@
                                     <div class="form-group" style="text-align:center;"> 
                                       <div class="col-md-6">
                                         <label for="message" class="control-label">Foto Pendaftar</label>
-                                        <img src="{{url('/img')}}{{$pend->path_foto}}" class="img-responsive voc_list_preview_img center-block" alt="User Image" style="max-height:200px;">
+                                        <img src="{{url('/img')}}/{{$pend->path_foto}}" class="img-responsive voc_list_preview_img center-block" alt="User Image" style="max-height:200px;">
                                       </div>
                                       <div class="col-md-6">
                                         <label for="message" class="control-label">Unduh CV Pendaftar</label>
-                                         <a href="{{url('/CV')}}{{$pend->path_cv}}"><img src="{{url('/img/download.ico')}}" class="img-responsive voc_list_preview_img center-block" alt="User Image" style="margin-top:25px; max-height:100px;"></a>
+                                         <a href="{{url('/CV')}}/{{$pend->path_cv}}"><img src="{{url('/img/download.ico')}}" class="img-responsive voc_list_preview_img center-block" alt="User Image" style="margin-top:25px; max-height:100px;"></a>
                                       </div>
                                     </div>
                                   </div>

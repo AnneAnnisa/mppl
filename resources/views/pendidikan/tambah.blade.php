@@ -78,7 +78,7 @@
             <div class="container">
                 <section class="content-header">
                     <h2 style="text-align: center;">
-                      Formulir Pendaftaran Latihan Keterampilan Manajemen Mahasiswa Tingkat Lanjut <br> LKMM-TL
+                     Tambah Data Universitas / Kampus
                   </h2>
               </section>
               <div class="row">
@@ -91,81 +91,27 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="{{url('pendaftaran/tambah')}}" method="post" role="form" enctype="multipart/form-data">
+                    <form action="{{url('tambahuniv/tambah')}}" method="post" role="form">
                         <div class="box-body">
                            {{ csrf_field() }}
                            <div class="form-group">
-                            <label for="exampleInputEmail1">Nomor Induk Mahasiswa (NIM)</label>
-                            <input name="nim" type="number" class="form-control" id="exampleInputEmail1" placeholder="5114100024" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nama Lengkap</label>
-                            <input name="nama" type="text" class="form-control" id="exampleInputEmail1" placeholder="Setyassida Novian Putra D" required="">
-                        </div>
-                        <div class="form-group">
-                            <label>Kampus Asal</label>
-                            <select name="kampus" class="form-control">
-                              <option></option>
-                              @foreach($pendidikan as $pend)
-                              <option value="{{$pend->id_pendidikan}}">{{$pend->universitas}} | {{$pend->fakultas}} | {{$pend->jurusan}} </option>
-                              @endforeach
-                          </select>
-                          Kampus belum terdaftar? | <a href=" {{url('tambahuniv')}} ">Tambah data kampus disini</a>
-                        </div>
-
-<!--                         <div style="display: none;" class="red box">
-                         <div class="col-md-6 col-md-offset-3">
-                             <div class="form-group">
                                 <label for="exampleInputEmail1">Universitas / Institut</label>
-                                <input name="tuniv" type="text" class="form-control" id="exampleInputEmail1" placeholder="Institut Teknologi Sepuluh Nopember" required="">
+                                <input name="univ" type="text" class="form-control" id="exampleInputEmail1" placeholder="Institut Teknologi Sepuluh Nopember" required="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Fakultas</label>
-                                <input name="tfakultas" type="text" class="form-control" id="exampleInputEmail1" placeholder="Fakultas Teknologi Informasi" required="">
+                                <input name="fak" type="text" class="form-control" id="exampleInputEmail1" placeholder="Fakultas Teknologi Informasi" required="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jurusan</label>
-                                <input name="tjurusan" type="text" class="form-control" id="exampleInputEmail1" placeholder="Teknik Informatika" required="">
+                                <input name="jur" type="text" class="form-control" id="exampleInputEmail1" placeholder="Teknik Informatika" required="">
                             </div>
-                        </div>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div> -->
-
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Alamat Email</label>
-                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="setyassida@gmail.com" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nomor Telepon</label>
-                        <input name="telepon" type="number" class="form-control" id="exampleInputEmail1" placeholder="085725017999" required="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Alamat Tempat Tinggal</label>
-                        <textarea name="alamat" class="form-control" rows="3" placeholder="Gebang Wetan No. 21, Sukolilo Surabaya" required=""></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Motivasi Mendaftar LKMM-TL 2017</label>
-                        <textarea name="motivasi" class="form-control" rows="3" placeholder="Saya ingin mengikuti LKMM-TL 2017 karena ..." required=""></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File CV</label>
-                        <input type="file" id="exampleInputFile" name="cv" >
-
-                        <p class="help-block">Format file cv berupa .pdf</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">Foto</label>
-                        <input name="foto" type="file" id="exampleInputFile" >
-
-                        <p class="help-block">Format file cv berupa .jpg atau .jpeg dengan ukuran file maksimal 2 Mb</p>
-                    </div>
 
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                  <button type="submit" class="btn btn-primary pull-right">Tambah</button>
               </div>
           </form>
       </div>

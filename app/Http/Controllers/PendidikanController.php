@@ -39,4 +39,19 @@ class PendidikanController extends Controller
 
         return redirect('/pendidikan')->with('status2', 'Berhasil Menambah Data');
 	}
+
+    public function tambahuniv(Request $request)
+    {
+        $pend = new Pendidikan;
+        $id_pend=DB::selectOne("SELECT uuid() as AUTO_INCREMENT;");
+        $pend->id_pendidikan=$id_pend->AUTO_INCREMENT;
+        $pend->universitas = $request->univ;
+        $pend->fakultas = $request->fak;
+        $pend->jurusan = $request->jur;
+        //$pend->alamat_jurusan = $request->alamat;
+        //$pend->telp_jurusan = $request->telp;
+        $pend->save();
+
+        return redirect('/daftar')->with('status2', 'Berhasil Menambah Data');
+    }
 }
