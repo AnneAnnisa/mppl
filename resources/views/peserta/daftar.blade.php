@@ -91,7 +91,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form action="{{url('pendaftaran/tambah')}}" method="post" role="form">
+                        <form action="{{url('pendaftaran/tambah')}}" method="post" role="form" enctype="multipart/form-data">
                             <div class="box-body">
                              {{ csrf_field() }}
                               <div class="form-group">
@@ -105,8 +105,9 @@
                             <div class="form-group">
                                 <label>Kampus Asal</label>
                                 <select name="kampus" class="form-control">
+                                  <option></option>
                                   @foreach($pendidikan as $pend)
-                                  <option>{{$pend->jurusan}}</option>
+                                  <option value="{{$pend->id_pendidikan}}">{{$pend->id_pendidikan}} | {{$pend->universitas}} | {{$pend->fakultas}} | {{$pend->jurusan}} </option>
                                   @endforeach
                               </select>
                               
@@ -130,13 +131,13 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">File CV</label>
-                        <input type="file" id="exampleInputFile" >
+                        <input type="file" id="exampleInputFile" name="cv" >
 
                         <p class="help-block">Format file cv berupa .pdf</p>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">Foto</label>
-                        <input type="file" id="exampleInputFile" >
+                        <input name="foto" type="file" id="exampleInputFile" >
 
                         <p class="help-block">Format file cv berupa .jpg atau .jpeg dengan ukuran file maksimal 2 Mb</p>
                     </div>

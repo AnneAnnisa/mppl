@@ -7,6 +7,8 @@ use App\pendaftar;
 use App\pendidikan;
 use App\wawancara;
 use DB;
+use App\file;
+use Illuminate\Support\Facedes\Input;
 
 class PendaftarController extends Controller
 {
@@ -65,18 +67,31 @@ class PendaftarController extends Controller
 	public function tambah(Request $request)
 	{
         $peserta = new Pendaftar;
-        $id_peserta=DB::selectOne("SELECT uuid() as AUTO_INCREMENT;");
-        $peserta->id_pendaftar=$id_peserta->AUTO_INCREMENT;
+        //$id_peserta=DB::selectOne("SELECT uuid() as AUTO_INCREMENT;");
+        //$peserta->id_pendaftar=$id_peserta->AUTO_INCREMENT;
         $peserta->nim = $request->nim;
         $peserta->nama = $request->nama;
         $peserta->email = $request->email;
-
-        //$peserta->kampus = $request->jur;
+        $peserta->id_pendidikan = $request->kampus;
         $peserta->alamat = $request->alamat;
         $peserta->telp = $request->telepon;
         $peserta->alasan = $request->motivasi;
+
+        $cv = $request->file('cv');
+        $filenamecv = $cv->getClientOriginalName();
+        $request->file('cv')->move("cv/", $filenamecv);
+
+        $image = $request->file('foto');
+        $filenamefoto = $image->getClientOriginalName();
+        $request->file('foto')->move("image/", $filenamefoto);
+
+        $peserta->path_foto = $filenamefoto;
+        $peserta->path_cv = $filenamecv;
         $peserta->save();
 
         return redirect('/daftar');
 	}
 }
+
+
+
