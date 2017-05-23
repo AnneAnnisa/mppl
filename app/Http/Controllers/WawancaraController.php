@@ -26,10 +26,10 @@ class WawancaraController extends Controller
 	public function comment(Request $request)
 	{
 		$id = DB::table('Menilai')->insertGetId(
-		    ['id_wawancara' => $request->wawan, 'nim_penguji' => 1, 'comment' => $request->comment, 'nilai' => $request->nilai]
+		    ['id_wawancara' => $request->wawan, 'nim_penguji' => $request->pewawancara, 'comment' => $request->comment, 'nilai' => $request->nilai]
 		);
 
-		$price = DB::table('Menilai')->avg('nilai');
+		$price = Menilai::where('id_wawancara', $request->wawan)->avg('nilai');
 
 	    Wawancara::where('id_wawancara', $request->wawan)
 		  ->update(['nilai_wawancara' => $price]);
@@ -38,8 +38,20 @@ class WawancaraController extends Controller
 	}
 	public function tanggal(Request $request)
 	{
+		$tang = $request->tanggal;
+		$bul = $request->bulan;
+		$tah = $request->tahun;
+		$jam = $request->jam;
+		$men = $request->menit;
+		$arr1 = array($jam,$men);
+		$tot1 = join(":",$arr1);
+		$arr = array($tah,$tot1);
+		$tot = join(" Pukul ",$arr);
+		$arr2 = array($tang,$bul,$tot);
+		$tot2 = join(" ",$arr2);
+		// dd($tot2);
 		$masuk = Wawancara::where('id_wawancara', $request->idi)
-			->update(['waktu_wawancara' => $request->datetimepicker]);
+			->update(['waktu_wawancara' => $tot2]);
 		// dd($masuk);
 
 		return back();

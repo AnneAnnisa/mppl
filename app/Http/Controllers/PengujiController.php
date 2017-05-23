@@ -16,16 +16,15 @@ class PengujiController extends Controller
     public function tambah(Request $request)
 	{
         $pend = new Penguji;
-        if(Penguji::where('nim_penguji', $request->nim))
-        {
-	        return redirect('/penguji')->with('status', 'NIM Penguji Sudah Terdaftar');        	
-        }
-        $pend->nim_penguji=$request->nim;
+        // if(Penguji::where('nim_penguji','=', $request->nim))
+        // {
+	       //  return redirect('/penguji')->with('status', 'NIM Penguji Sudah Terdaftar');
+        // }
+        $pend->nim_penguji=$request->nimubah;
         $pend->nama_penguji = $request->nama;
         $pend->telp_penguji = $request->telp;
         $pend->status_penguji = $request->stat;
         $pend->save();
-
         return redirect('/penguji')->with('status2', 'Berhasil Menambah Data');
 	}
     public function update(Request $request)

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('landingpage');
 });
@@ -23,8 +24,6 @@ Route::get('login', function () {
 //     return view('peserta.daftar');
 // });
 
-
-
 Route::get('daftar', 'PendaftarController@daftarpeserta');
 Route::post('pendaftaran/tambah', 'PendaftarController@tambah');
 
@@ -36,10 +35,10 @@ Route::post('lihatpengumuman/cek', 'PengumumanController@cek');
 
 
 
-
-
 // MENU MANAJEMEN
 Route::get('home', 'HomeController@index');
+Route::post('loginBack', 'HomeController@loglog');
+Route::get('logout', 'HomeController@logout');
 Route::get('landing', 'LandingController@index');
 
 Route::get('pendidikan', 'PendidikanController@pendidikan');

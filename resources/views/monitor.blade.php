@@ -7,7 +7,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Data Pendaftar
+      Data Saat Ini
     </h1>
   </section>
 
@@ -19,7 +19,8 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>3</h3>
+              
+              <h3>{{$diterima}}</h3>
 
               <p>Diterima</p>
             </div>
@@ -34,7 +35,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>5</h3>
+              <h3>{{$wawancara}}</h3>
 
               <p>Wawancara</p>
             </div>
@@ -49,7 +50,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>30</h3>
+              <h3>{{$pendaftar}}</h3>
 
               <p>Pendaftar</p>
             </div>
@@ -64,7 +65,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>10</h3>
+              <h3>{{$belum}}</h3>
 
               <p>Belum Diproses</p>
             </div>

@@ -7,8 +7,6 @@ use App\pendaftar;
 use App\pendidikan;
 use App\wawancara;
 use DB;
-use App\file;
-use Illuminate\Support\Facedes\Input;
 
 class PendaftarController extends Controller
 {
@@ -60,9 +58,7 @@ class PendaftarController extends Controller
 	
 		return view('peserta.daftar', ['pendidikan' => $pendidikan,]);
 	}
-
-
-
+	
 
 	public function tambah(Request $request)
 	{
@@ -100,8 +96,4 @@ class PendaftarController extends Controller
 	
 		return view('pendidikan.tambah');
 	}
-
 }
-
-
-

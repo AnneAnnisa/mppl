@@ -61,8 +61,8 @@
                       <th class="col-md-2">Nama</th>
                       <th class="col-md-2">NIM</th>
                       <th class="col-md-2">Universitas</th>
-                      <th class="col-md-2">Tanggal</th>
-                      <th class="col-md-2">Nilai Akhir</th>
+                      <th class="col-md-3">Tanggal</th>
+                      <th class="col-md-1">Nilai</th>
                       <th class="col-md-2">Action</th>
                     </tr>
                   </thead>
@@ -73,7 +73,9 @@
                     <td>{{$pend->pendaftar->nim}}</td>
                     <td>{{$pend->pendaftar->pendidikan->universitas}}</td>
                     @if($pend->waktu_wawancara != NULL)
-                    <td>{{$pend->waktu_wawancara}}</td>
+                    <td>{{$pend->waktu_wawancara}}
+                      <a href="" class="hehe" id="tang{{$pend->id_wawancara}}" data-temp="1" data-tangid="{{$pend->id_wawancara}}" data-toggle="modal" data-target="#tang{{$pend->id_wawancara}}"><span class="glyphicon glyphicon-calendar" title="ganti tanggal wawancara" style="color:green"></span></a>
+                    </td>
                     @else
                     <td>
                       <a href="" class="hehe" id="tang{{$pend->id_wawancara}}" data-temp="1" data-tangid="{{$pend->id_wawancara}}" data-toggle="modal" data-target="#tang{{$pend->id_wawancara}}"><b>Set Tanggal<b></a>
@@ -116,21 +118,75 @@
                                   <form method="post" action="{{url('/submitTanggal')}}">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                      <div class="col-md-3">
+                                        <div class="col-md-6"><b>Tanggal</b></div>
+                                        <div class="col-md-5"><b>Jam</b></div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="hidden" name="idi" value="{{$pend->id_wawancara}}">
+                                      <div class="col-md-12"><br></div>
+                                      <div class="col-md-1">
+                                        <select name="tanggal">
+                                          @for($i=1 ; $i<32 ; $i++)
+                                          <option value="{{$i}}">{{$i}}</option>
+                                          @endfor
+                                        </select>
+                                      </div>
+                                      <div class="col-md-2">
+                                        <select name="bulan">
+                                          <option value="Januari">Januari</option>
+                                          <option value="Februari">Februari</option>
+                                          <option value="Maret">Maret</option>
+                                          <option value="April">April</option>
+                                          <option value="Mei">Mei</option>
+                                          <option value="Juni">Juni</option>
+                                          <option value="Juli">Juli</option>
+                                          <option value="Agustus">Agustus</option>
+                                          <option value="September">September</option>
+                                          <option value="Oktober">Oktober</option>
+                                          <option value="November">November</option>
+                                          <option value="Desember">Desember</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-2">
+                                        <select name="tahun">
+                                          @for($i=2017 ; $i<2030 ; $i++)
+                                          <option value="{{$i}}">{{$i}}</option>
+                                          @endfor
+                                        </select>
+                                      </div>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-1">
+                                        <select name="jam">
+                                          @for($i=6 ; $i<24 ; $i++)
+                                          <option value="{{$i}}">{{$i}}</option>
+                                          @endfor
+                                        </select>
+                                      </div>
+                                      <div class="col-md-1">
+                                        <select name="menit">
+                                          @for($i=0 ; $i<12 ; $i++)
+                                          <?php $j=5*$i ?>
+                                          <option value="{{$j}}">{{$j}}</option>
+                                          @endfor
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4"></div>
+                                      <!-- <div class="col-md-3">
                                         <input type="hidden" name="idi" value="{{$pend->id_wawancara}}">
                                       </div>
                                       <div class="col-md-6">
                                         <div class='input-group'>
-                                          <input type='text' class="form-control" name="datetimepicker" id='datetimepicker'/>
+                                          <input type='text' class="form-control" name="datetimepicker" id='bisaplz'/>
                                         </div>
                                       </div>
                                       <div class="col-md-3">
-                                      </div>
+                                      </div> -->
                                     </div>
                                     <div class="modal-footer">
-                                      <br>
+                                      <br><br>
                                       <button type="submit" class="btn btn-success">Save changes</button>
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                                     </div>
                                   </form>
                                 </div>
@@ -151,7 +207,7 @@
                                 <ul class="navbar1">
                                   @foreach($menilai as $i => $nila)
                                     @if($pend->id_wawancara == $nila->id_wawancara)
-                                      <li style="width:10px" class="orang" data-xnilai="{{$nila->nilai}}" data-xcom="{{$nila->comment}}"><a href="#">{{$nila->penguji->nama_penguji}}</a></li>
+                                      <li style="width:10px" class="orang" id="ambilnih" data-idid="{{$nila->id_nilai}}" data-xnilaii="{{$nila->nilai}}" data-xcomm="{{$nila->comment}}"><a href="#">{{$nila->penguji->nama_penguji}}</a></li>
                                     @endif
                                   @endforeach
                                 </ul>
@@ -166,7 +222,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Catatan / Komentar</label>
-                                    <textarea rows="4" class="form-control" name="comment" type="text" id="xcomm" value="dfs" disabled>Pilih nama diatas untuk melihat komentar yang diberikan</textarea>
+                                    <textarea rows="4" class="form-control" name="comment" type="text" id="xcom" disabled>Pilih nama diatas untuk melihat komentar yang diberikan</textarea>
                                   </div>
                                 </div>
                               </div>
@@ -178,6 +234,7 @@
                         </div>
                       </div>
                     </div>
+
 
 <!-- MODAL WAWANCARA -->
                       <div class="modal fade" id="waw{{$pend->id_pendaftar}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -192,6 +249,7 @@
                                 <form method="post" action="{{url('/submitComment')}}">
                                   {{csrf_field()}}
                                   <input type="hidden" name="wawan" value="{{$pend->id_wawancara}}">
+                                  <input type="hidden" name="pewawancara" value="{{session ('user')["nim_penguji"]}}">
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label>Nama</label>
@@ -326,29 +384,17 @@
 @endsection
 
 @section('js')
+
 <script type="text/javascript">
   $('.orang').on('click', function(event){
 
-      document.getElementById("xnil").value=this.dataset.xnilai;
-      document.getElementById("xcomm").value=this.dataset.xcom;
+    var article = document.getElementById('ambilnih');
+    var res = this.dataset.idid;
+
+      document.getElementById('xnil').value=this.dataset.xnilaii;
+      document.getElementById('xcom').value=this.dataset.xcomm;
 
   });
-  $(".hehe").click(function(event) {
-        
-        var article = document.getElementById(this.id);
-        var res= article.dataset.tangid;        
-        $('#datetimepickerz'+res).datetimepicker({
-          format: 'DD/MM/YYYY',
-          useCurrent: false,
-          allowInputToggle: true
-          
-        });
-    });
-  $('#datetimepicker').datetimepicker({
-          format: 'YYYY/MM/DD hh:mm:ss',
-          useCurrent: false,
-          allowInputToggle: true});
-
 </script>
 
 

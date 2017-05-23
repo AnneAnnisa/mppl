@@ -47,7 +47,13 @@
                     <td>{{$pend->nama_penguji}}</td>
                     <td>{{$pend->nim_penguji}}</td>
                     <td>{{$pend->telp_penguji}}</td>
-                    <td>{{$pend->status_penguji}}</td>
+                    <td>
+                      @if($pend->status_penguji == 1)
+                      Oke
+                      @else
+                      No
+                      @endif
+                    </td>
                     <td>
                       <a href="#peng" class="hehedit" id="hehe{{$pend->nim_penguji}}" data-temp="1" data-nim="{{$pend->nim_penguji}}" data-nama="{{$pend->nama_penguji}}" data-telp="{{$pend->telp_penguji}}" data-stat="{{$pend->status_penguji}}"><span class='fa fa-file' title="lihat data" style="color:navy"></span>  <span class='fa fa-edit' title="edit data" style="color:orange"></span></a>
                       <a href="#hap" onclick="event.preventDefault(); document.getElementById('haps-form{{$pend->nim_penguji}}').submit();"><span class='fa fa-trash' title="hapus data" style="color:red"></span></a>
@@ -128,7 +134,10 @@
                               </div>
                               <div class="form-group">
                                 <label>Status Penguji</label>
-                                <input class="form-control" name="stat" type="text" id="stat" >
+                                  <select class="form-control" id="sel1" name="stat">
+                                    <option value="1">Boleh Mewawancarai</option>
+                                    <option value="0">Tidak Boleh Mewawancarai</option>
+                                  </select>
                               </div>
                             </div>
                           </div>

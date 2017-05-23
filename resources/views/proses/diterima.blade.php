@@ -32,7 +32,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Wawancara
+      Peserta LKMM TL
     </h1>
   </section>
 
